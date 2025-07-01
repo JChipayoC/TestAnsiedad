@@ -1,0 +1,17 @@
+{
+    "questions": [
+        "¿Cómo te sientes hoy?",
+        "¿Has sentido ansiedad en los últimos días?",
+        "¿Te sientes con energía o fatigado?",
+        "¿Cuánto tiempo pasas al día haciendo actividades relajantes?",
+        "¿Qué tan bien duermes por la noche?",
+        "... hasta la pregunta 50"
+    ],
+    "responses": [
+        "Totalmente en desacuerdo",
+        "En desacuerdo",
+        "Neutral",
+        "De acuerdo",
+        "Totalmente de acuerdo"
+    ]
+}

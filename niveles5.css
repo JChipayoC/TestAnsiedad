@@ -1,0 +1,190 @@
+/* --- Estilos para Nivel 5 --- */
+
+/* --- Estilos Generales --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'Arial', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background 2s ease;
+}
+
+/* --- Animaciones --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animación de pulso para la sombra del nivel 5 */
+@keyframes pulseShadow {
+    0% {
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    }
+    50% {
+        box-shadow: 0 14px 45px rgba(255, 107, 0, 0.25);
+    }
+    100% {
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    }
+}
+
+
+/* --- Contenedor de Navegación Superior --- */
+.nav-container {
+    width: 100%;
+    max-width: 980px;
+    text-align: right;
+    padding: 20px 0;
+}
+
+/* --- Contenedor de Resultados --- */
+.result-container {
+    width: 80%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.8s ease-out forwards;
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Borde base sutil */
+}
+
+/* --- Botón (Estilos Base Neutros) --- */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #5c3d78;
+    border: 2px solid #5c3d78;
+    color: #fff;
+}
+.btn:hover {
+    background-color: #4a2f60;
+    border-color: #4a2f60;
+    transform: translateY(-3px);
+}
+
+/* --- Títulos y Texto --- */
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(45deg, #684291, #5c3d78);
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700; /* Títulos más destacados */
+}
+
+.level-icon {
+    font-size: 1.1em; /* Ajuste para el ícono de alerta */
+    margin-right: 15px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+/* --- Barra de Progreso --- */
+.progress-bar-container {
+    background-color: #e9ecef;
+    border-radius: 1rem;
+    padding: 4px;
+    margin-top: 30px;
+}
+.progress-bar {
+    height: 12px;
+    border-radius: 1rem;
+    transition: width 1.5s ease-out;
+}
+
+/* ================================================================
+    ESTILOS ESPECÍFICOS DEL NIVEL 5
+================================================================ */
+body.nivel5 {
+    /* Fondo naranja suave */
+    background-color: #FFDAB9; /* PeachPuff / Naranja suave */
+}
+
+/* Tarjeta con borde y sombra más pronunciados y animados */
+body.nivel5 .result-container {
+    border: 3px solid #FFA07A; /* LightSalmon */
+    /* Sombra más marcada y con animación de pulso */
+    animation: fadeInUp 0.8s ease-out forwards, pulseShadow 3s infinite;
+}
+
+/* Iconos y color para el título del nivel */
+body.nivel5 h2::before {
+    content: "🔶🧠";
+    margin-right: 15px;
+    font-size: 1.1em;
+}
+
+body.nivel5 h2,
+body.nivel5 strong {
+    color: #FF4500; /* OrangeRed, para un contraste más tenso */
+}
+
+/* Título principal con tema naranja */
+body.nivel5 h1 {
+    background: linear-gradient(45deg, #FF8C00, #FF4500); /* DarkOrange a OrangeRed */
+}
+
+/* Botones con tema naranja */
+body.nivel5 .btn {
+    background-color: #FF6347; /* Tomato */
+    border-color: #FF6347;
+    color: #fff;
+}
+body.nivel5 .btn:hover {
+    background-color: #E5533D;
+    border-color: #E5533D;
+}
+
+/* Barra de progreso con tema naranja */
+body.nivel5 .progress-bar {
+    background: linear-gradient(90deg, #FFA500, #FF6347);
+}
+
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 20px;
+        text-align: center;
+    }
+    .result-container {
+        padding: 20px;
+        width: 90%;
+    }
+    h1 { font-size: 24px; }
+    h2 { font-size: 22px; }
+    p { font-size: 16px; }
+}

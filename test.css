@@ -1,0 +1,330 @@
+/* --- Variables Globales para Colores y Fuentes --- */
+:root {
+    --bg-color: #e9d4f1;
+    --text-color: #2e2e2e;
+    --primary-purple: #6a0dad;
+    --primary-purple-hover: #4b0082;
+    --secondary-purple: #9c77d4;
+    --font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* --- Estilos Generales y de Cuerpo --- */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: var(--font-family);
+    background-color: var(--bg-color); /* Color de respaldo por si la imagen no carga */
+    color: var(--text-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    position: relative; /* Necesario para el pseudo-elemento del fondo */
+    overflow-x: hidden; /* Evita scroll horizontal por las burbujas */
+}
+
+/* --- 🧘 NUEVO: Fondo con Imagen Tenue --- */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Cambia la URL a la imagen que prefieras */
+    background-image: url('https://wallpapers.com/images/high/relaxation-910-x-910-wallpaper-8we4s2dg4b14ipvl.webp');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px); /* Desenfoque */
+    opacity: 0.4;      /* Opacidad */
+    z-index: -2;       /* Coloca la imagen detrás de todo */
+}
+
+
+/* --- 🫧 NUEVO: Burbujas Flotantes Animadas --- */
+.bubbles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Detrás del contenido, pero encima del fondo */
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -150px; /* Inician fuera de la pantalla */
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    animation: floatUp 25s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-120vh) translateX(20vw); /* Se mueven hacia arriba y ligeramente a un lado */
+        opacity: 0;
+    }
+}
+
+/* Tamaños y posiciones variadas para las burbujas */
+.bubble:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-duration: 22s; }
+.bubble:nth-child(2) { width: 40px; height: 40px; left: 20%; animation-duration: 30s; animation-delay: 3s; }
+.bubble:nth-child(3) { width: 60px; height: 60px; left: 35%; animation-duration: 18s; animation-delay: 5s; }
+.bubble:nth-child(4) { width: 30px; height: 30px; left: 50%; animation-duration: 28s; }
+.bubble:nth-child(5) { width: 90px; height: 90px; left: 55%; animation-duration: 15s; animation-delay: 2s; }
+.bubble:nth-child(6) { width: 50px; height: 50px; left: 70%; animation-duration: 25s; animation-delay: 6s; }
+.bubble:nth-child(7) { width: 25px; height: 25px; left: 85%; animation-duration: 35s; }
+.bubble:nth-child(8) { width: 70px; height: 70px; left: 90%; animation-duration: 20s; animation-delay: 8s; }
+.bubble:nth-child(9) { width: 45px; height: 45px; left: 5%; animation-duration: 26s; }
+.bubble:nth-child(10) { width: 65px; height: 65px; left: 45%; animation-duration: 23s; animation-delay: 10s; }
+
+
+/* --- ESTILOS PREVIOS (SIN CAMBIOS) --- */
+
+h1#nombreUsuario {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, var(--primary-purple), var(--secondary-purple));
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 25px;
+    max-width: 90%;
+    display: inline-block;
+    border: 2px solid var(--primary-purple-hover);
+    box-sizing: border-box;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 900px;
+    /* CAMBIO: Se usa rgba para la transparencia */
+    background-color: rgba(255, 255, 255, 0.5); 
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 2px solid var(--primary-purple);
+    box-sizing: border-box;
+    overflow: hidden;
+    
+    /* AÑADIDO (Opcional): Efecto de cristal esmerilado */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+#question-container {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+#question-container.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#progress-container {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+#progress-text {
+    font-size: 1.1rem;
+    color: var(--primary-purple);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#progress-flowers {
+    font-size: 1.8rem;
+    letter-spacing: 5px;
+}
+
+.question-box {
+    padding: 20px;
+    border: 2px solid var(--secondary-purple);
+    border-radius: 10px;
+    background-color: #f4e0f5;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #333;
+}
+
+.scale-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.scale-container label {
+    font-size: 1.1em;
+    padding: 10px 18px;
+    cursor: pointer;
+    border: 1px solid var(--secondary-purple);
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.scale-container input[type="radio"] {
+    display: none;
+}
+
+.scale-container label:hover {
+    background-color: #f4e0f5;
+    transform: translateY(-3px);
+}
+
+.scale-container label:has(input[type="radio"]:checked) {
+    background-color: var(--primary-purple);
+    color: white;
+    border-color: var(--primary-purple-hover);
+}
+
+button {
+    padding: 12px 25px;
+    background-color: var(--secondary-purple);
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    width: auto;
+    min-width: 200px;
+    max-width: 300px;
+}
+
+button:hover {
+    background-color: var(--primary-purple);
+    transform: scale(1.05);
+}
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-purple);
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+    background-color: var(--primary-purple-hover);
+}
+
+#relaxation-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    background-color: var(--primary-purple);
+    color: white;
+    font-size: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#relaxation-button:hover {
+    transform: scale(1.1);
+    background-color: var(--primary-purple-hover);
+}
+
+
+/* --- SECCIÓN RESPONSIVA --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1#nombreUsuario {
+        font-size: 1.5rem;
+        padding: 12px 24px;
+        margin-bottom: 20px;
+    }
+
+    .main-container {
+        padding: 20px;
+    }
+    
+    .question-box {
+        font-size: 1.2rem;
+        padding: 15px;
+    }
+    
+    #progress-flowers {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        word-break: break-all;
+    }
+
+    .scale-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .scale-container label {
+        width: 100%;
+        max-width: 350px;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+
+    button {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .back-button, #relaxation-button {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    
+    #relaxation-button {
+        right: 15px;
+    }
+
+    .back-button {
+        left: 15px;
+    }
+}   

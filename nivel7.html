@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel 7: Alto</title>
+    <link rel="stylesheet" href="niveles7.css">
+</head>
+
+<body class="nivel7">
+    <div class="button-container">
+        <a href="index.html" class="btn">Volver al Inicio</a>
+    </div>
+    <div class="result-container">
+        <h1 id="nombreUsuario"></h1> <!-- Mostrar el nombre aquí -->
+        <h2>Nivel 7: Alto</h2>
+        <p><strong>Retroalimentación:</strong> Es urgente que busques atención especializada para tu ansiedad.</p>
+        <p><strong>Consejos:</strong> Es urgente que busques atención especializada para tu ansiedad.</p>
+        <p><strong>Guía:</strong> Sigue recomendaciones médicas o terapéuticas con constancia. Realiza ejercicios de
+            autocuidado diario y evita la autocrítica. Participa en actividades que te reconforten.</p>
+    </div>
+    <script>
+        window.onload = function () {
+            // Obtener el nombre desde sessionStorage
+            const nombre = sessionStorage.getItem('nombreUsuario');
+            if (nombre) {
+                document.getElementById('nombreUsuario').innerText = "Hola, " + nombre + ".";
+            } else {
+                document.getElementById('nombreUsuario').innerText = "Resultados";
+            }
+        }
+    </script>
+</body>
+
+</html>

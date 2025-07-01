@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado: Nivel 1 - Muy Bajo</title>
+    <link rel="stylesheet" href="niveles1.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="nivel1">
+    
+    <div class="nav-container">
+        <a href="index.html" class="btn">Volver al Inicio</a>
+    </div>
+
+    <div class="result-container">
+        <h1 id="nombreUsuario"></h1>
+        <h2>
+            <span class="level-icon">🌿</span>
+            Nivel 1: Muy Bajo
+        </h2>
+        
+        <p><strong>Retroalimentación:</strong> Estás manejando muy bien tu bienestar emocional y el estrés.</p>
+        <p><strong>Consejos:</strong> Mantén tus hábitos saludables, como dormir bien, hacer ejercicio regularmente y
+            alimentarte bien. Sigue dedicando tiempo a actividades que disfrutas y que te relajan.</p>
+        <p><strong>Guía:</strong> Continúa fortaleciendo tu red de apoyo social, habla con personas cercanas cuando lo
+            necesites y mantente atenta a cualquier cambio en cómo te sientes.</p>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const nombre = sessionStorage.getItem('nombreUsuario');
+            if (nombre) {
+                document.getElementById('nombreUsuario').innerText = "Hola, " + nombre + ".";
+            } else {
+                document.getElementById('nombreUsuario').innerText = "Resultados";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+/* --- Variables Globales --- */
+:root {
+    --bg-color-start: #f3e7e9; /* Rosado suave */
+    --bg-color-end: #e3eeff;   /* Lavanda suave */
+    --text-color: #2e2e2e;
+    --primary-purple: #6a0dad;
+    --secondary-purple: #9c77d4;
+    --accent-purple: #7d59c8;
+    --font-family: 'Comic Sans MS', cursive, sans-serif;
+
+    /* Colores para niveles de resultado */
+    --level-low-color: #3c8f5d;    /* Verde */
+    --level-moderate-color: #d98d30; /* Naranja */
+    --level-high-color: #b83b5e;    /* Fucsia */
+}
+
+/* --- Estilos Generales y Fondo Gradiente --- */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: var(--font-family);
+    /* NUEVO: Fondo gradiente y formas flotantes */
+    background: linear-gradient(135deg, var(--bg-color-end), var(--bg-color-start));
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Formas flotantes (sin cambios) */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    opacity: 0.2;
+    filter: blur(80px);
+}
+body::before {
+    width: 350px;
+    height: 350px;
+    background-color: var(--primary-purple);
+    top: -50px;
+    left: -100px;
+    animation: float 15s infinite alternate;
+}
+body::after {
+    width: 300px;
+    height: 300px;
+    background-color: var(--accent-purple);
+    bottom: -80px;
+    right: -100px;
+    animation: float 12s infinite alternate;
+}
+
+@keyframes float {
+    to { transform: translateY(40px) translateX(-30px) rotate(20deg); }
+}
+
+/* --- Contenedor Principal --- */
+.result-container {
+    width: 90%;
+    max-width: 700px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 30px 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* --- Elementos de la UI --- */
+h1 {
+    font-size: 2rem;
+    color: var(--primary-purple);
+    margin-bottom: 15px;
+}
+.score-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 0;
+}
+.score-text span {
+    color: var(--accent-purple);
+    font-size: 1.4rem;
+}
+
+/* Barra de Progreso (sin cambios) */
+#progress-bar {
+    width: 100%;
+    height: 25px;
+    background-color: rgba(0, 0, 0, 0.08);
+    border-radius: 15px;
+    margin-top: 25px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+#progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--secondary-purple), var(--primary-purple));
+    width: 0%;
+    border-radius: 15px;
+    transition: width 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+    background-size: 200% 100%;
+    animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+    to { background-position: -200% 0; }
+}
+
+/* --- NUEVO: Estilos para el Resultado Visual --- */
+#visual-result {
+    display: none; /* Se muestra con JS */
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    animation: fadeIn 0.5s ease;
+}
+#visual-result-icon {
+    font-size: 4rem; /* Ícono grande */
+    line-height: 1;
+}
+#visual-result-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Clases de color para el texto del resultado */
+.level-low #visual-result-text { color: var(--level-low-color); }
+.level-moderate #visual-result-text { color: var(--level-moderate-color); }
+.level-high #visual-result-text { color: var(--level-high-color); }
+
+
+/* --- Contenedor del Loader/GIF --- */
+.loader-container {
+    margin-top: 30px;
+}
+.loader-gif {
+    width: 100px;
+    height: auto;
+    opacity: 0.9;
+    margin: 5px 0;
+    animation: pulse 2.5s infinite ease-in-out;
+}
+.loader-container p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 5px 0;
+}
+
+@keyframes pulse {
+    50% { transform: scale(1.08); }
+}
+
+/* --- Estilos Responsivos --- */
+@media (max-width: 768px) {
+    h1 { font-size: 1.8rem; }
+    .score-text { font-size: 1rem; }
+    .score-text span { font-size: 1.2rem; }
+    #visual-result-icon { font-size: 3.5rem; }
+    #visual-result-text { font-size: 1.1rem; }
+}

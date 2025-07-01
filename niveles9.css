@@ -1,0 +1,199 @@
+/* --- Estilos Generales --- */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Poppins', 'Arial', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background-color 0.5s ease;
+}
+
+/* --- Animaciones --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes criticalPulse {
+    0% {
+        box-shadow: 0 0 20px 5px rgba(139, 0, 0, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 30px 10px rgba(139, 0, 0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 20px 5px rgba(139, 0, 0, 0.6);
+    }
+}
+
+@keyframes buttonGlow {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(178, 34, 34, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 25px rgba(178, 34, 34, 0.8);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(178, 34, 34, 0.5);
+    }
+}
+
+
+/* --- Contenedor de Botones --- */
+.button-container {
+    width: 100%;
+    max-width: 900px;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+/* --- Contenedor de Resultados --- */
+.result-container {
+    width: 100%;
+    max-width: 900px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* --- Botones --- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #5c3d78;
+    border: 2px solid #5c3d78;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* --- Títulos y Texto --- */
+h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px;
+    background: linear-gradient(45deg, #684291, #5c3d78);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+    text-align: left;
+}
+
+strong {
+    font-weight: 700;
+}
+
+
+/* ================================================================
+   ESTILOS ESPECÍFICOS DEL NIVEL 9
+================================================================ */
+
+body.nivel9 {
+    /* Fondo carmesí/burdeos oscuro y serio */
+    background-color: #4a2f4a;
+}
+
+body.nivel9 .result-container {
+    /* Contenedor de alerta con borde grueso y sombra pulsante */
+    background-color: #fbeeee; /* Fondo rojo muy pálido */
+    border: 6px solid #9B2D2B; /* Borde burdeos oscuro */
+    animation: fadeInUp 0.8s ease-out forwards, criticalPulse 1.8s infinite;
+}
+
+/* Iconografía grande y de alta visibilidad */
+body.nivel9 h2 {
+    font-weight: 800; /* Tipografía más pesada */
+    color: #9B2D2B;
+}
+body.nivel9 h2::before {
+    content: "❗️🧯";
+    margin-right: 15px;
+    font-size: 1.4em; /* Iconos grandes */
+}
+
+/* Tono profesional y urgente para el texto */
+body.nivel9 strong {
+    color: #9B2D2B;
+    font-weight: 800;
+}
+body.nivel9 p {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f5d7da;
+}
+body.nivel9 p:last-child {
+    border-bottom: none;
+}
+
+/* Título principal con tema de alerta máxima */
+body.nivel9 h1 {
+    background: linear-gradient(45deg, #b22222, #8b0000); /* Firebrick a DarkRed */
+    font-weight: 800;
+    color: #fff;
+}
+
+/* Botón destacado para buscar ayuda */
+body.nivel9 .btn {
+    background-color: #b22222; /* Rojo intenso */
+    border-color: #9B2D2B;
+    padding: 15px 35px; /* Más grande */
+    font-size: 18px;
+    animation: buttonGlow 2.5s infinite ease-in-out;
+}
+body.nivel9 .btn:hover {
+    background-color: #8b0000;
+    border-color: #8b0000;
+    animation-play-state: paused; /* Detener el brillo al pasar el ratón */
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+    .button-container {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .result-container {
+        padding: 25px;
+    }
+    h1 { font-size: 24px; }
+    h2 {
+        font-size: 26px;
+        flex-direction: column;
+    }
+    h2::before {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    p { font-size: 16px; }
+}

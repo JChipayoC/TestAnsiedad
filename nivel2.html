@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado: Nivel 2 - Bajo</title>
+    <link rel="stylesheet" href="niveles2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="nivel2">
+    
+    <div class="nav-container">
+        <a href="index.html" class="btn">Volver al Inicio</a>
+    </div>
+
+    <div class="result-container">
+        <h1 id="nombreUsuario"></h1>
+        <h2>
+            <span class="level-icon">🧘</span>
+            Nivel 2: Bajo
+        </h2>
+        
+        <p><strong>Retroalimentación:</strong> Tu ansiedad es baja, pero es importante que no la ignores.</p>
+        <p><strong>Consejos:</strong> Dedica tiempo a actividades que te calmen, como escuchar música, dibujar o
+            caminar. Practica técnicas simples de respiración profunda para relajarte cuando sientas inquietud.</p>
+        <p><strong>Guía:</strong> Observa cómo respondes ante situaciones estresantes y busca ayuda en personas de
+            confianza si notas que la ansiedad aumenta.</p>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const nombre = sessionStorage.getItem('nombreUsuario');
+            if (nombre) {
+                document.getElementById('nombreUsuario').innerText = "Hola, " + nombre + ".";
+            } else {
+                document.getElementById('nombreUsuario').innerText = "Resultados";
+            }
+        }
+    </script>
+</body>
+
+</html>

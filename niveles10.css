@@ -1,0 +1,197 @@
+/* --- Estilos Generales --- */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Poppins', 'Arial', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background-color 0.5s ease;
+}
+
+/* --- Animaciones --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes emergencyFlash {
+    0% {
+        border-color: #721C24;
+        box-shadow: 0 0 25px 10px rgba(220, 53, 69, 0.5);
+    }
+    50% {
+        border-color: #F5C6CB;
+        box-shadow: 0 0 35px 15px rgba(220, 53, 69, 0.9);
+    }
+    100% {
+        border-color: #721C24;
+        box-shadow: 0 0 25px 10px rgba(220, 53, 69, 0.5);
+    }
+}
+
+@keyframes callToActionPulse {
+    0% { transform: scale(1.0); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1.0); }
+}
+
+
+/* --- Contenedor de Botones --- */
+.button-container {
+    width: 100%;
+    max-width: 900px;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+/* --- Contenedor de Resultados --- */
+.result-container {
+    width: 100%;
+    max-width: 900px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* --- Botones --- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #5c3d78;
+    border: 2px solid #5c3d78;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* --- Títulos y Texto --- */
+h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px;
+    background: linear-gradient(45deg, #684291, #5c3d78);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+    text-align: left;
+}
+
+strong {
+    font-weight: 700;
+}
+
+
+/* ================================================================
+   ESTILOS ESPECÍFICOS DEL NIVEL 10
+================================================================ */
+
+body.nivel10 {
+    /* Fondo oscuro para máximo contraste y seriedad */
+    background-color: #1a1a1a;
+}
+
+body.nivel10 .result-container {
+    /* Tarjeta impactante con borde animado parpadeante */
+    background-color: #F8D7DA; /* Fondo rojo pálido */
+    border: 8px solid;
+    animation: fadeInUp 0.8s ease-out forwards, emergencyFlash 1s infinite;
+}
+
+/* Iconografía grande para captar la atención */
+body.nivel10 h2 {
+    font-weight: 900; /* Tipografía más pesada */
+    color: #721C24; /* Rojo muy oscuro */
+}
+body.nivel10 h2::before {
+    content: "🆘📞";
+    margin-right: 15px;
+    font-size: 1.6em; /* Iconos muy grandes */
+    filter: drop-shadow(0 0 5px rgba(114, 28, 36, 0.5));
+}
+
+/* Contraste fuerte en el texto */
+body.nivel10 strong {
+    color: #721C24;
+    font-weight: 900;
+}
+body.nivel10 p {
+    border-bottom: 1px solid #f1c9ce;
+}
+body.nivel10 p:last-of-type {
+    border-bottom: none;
+}
+
+
+/* Título principal con tema de emergencia */
+body.nivel10 h1 {
+    background: linear-gradient(45deg, #dc3545, #721C24);
+    font-weight: 900;
+    color: #fff;
+    border: 2px solid #F5C6CB;
+}
+
+/* Botón grande de contacto / enlace a ayuda */
+body.nivel10 .btn {
+    background-color: #dc3545; /* Rojo de emergencia */
+    border: 3px solid #F5C6CB;
+    color: #fff;
+    padding: 18px 40px; /* Botón muy grande */
+    font-size: 20px;
+    border-radius: 8px;
+    animation: callToActionPulse 1.5s infinite ease-in-out;
+}
+body.nivel10 .btn:hover {
+    background-color: #c82333; /* Rojo más oscuro al pasar el ratón */
+    border-color: #fff;
+    animation-play-state: paused;
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+    .button-container {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .result-container {
+        padding: 25px;
+    }
+    h1 { font-size: 24px; }
+    h2 {
+        font-size: 28px;
+        flex-direction: column;
+    }
+    h2::before {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    p { font-size: 16px; }
+}

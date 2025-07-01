@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado: Nivel 3 - Ligeramente Elevado</title>
+    <link rel="stylesheet" href="niveles3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="nivel3">
+    
+    <div class="nav-container">
+        <a href="index.html" class="btn">Volver al Inicio</a>
+    </div>
+
+    <div class="result-container">
+        <h1 id="nombreUsuario"></h1>
+        <h2>
+            <span class="level-icon">🌼</span>
+            Nivel 3: Ligeramente Elevado
+        </h2>
+        
+        <p><strong>Retroalimentación:</strong> Tu ansiedad está un poco más alta de lo ideal.</p>
+        <p><strong>Consejos:</strong> Comienza a practicar técnicas de relajación, como respiración abdominal o
+            ejercicios de mindfulness. Es saludable compartir tus preocupaciones con alguien en quien confíes.</p>
+        <p><strong>Guía:</strong> Evita el consumo excesivo de cafeína o sustancias que puedan aumentar la ansiedad.
+            Considera mantener un diario donde anotes cómo te sientes.</p>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 30%;"></div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const nombre = sessionStorage.getItem('nombreUsuario');
+            if (nombre) {
+                document.getElementById('nombreUsuario').innerText = "Hola, " + nombre + ".";
+            } else {
+                document.getElementById('nombreUsuario').innerText = "Resultados";
+            }
+        }
+    </script>
+</body>
+
+</html>

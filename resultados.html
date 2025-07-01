@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Resultados</title>
+    <link rel="stylesheet" href="resultados.css">
+</head>
+
+<body>
+    <div class="result-container">
+        <h1 id="nombreUsuario"></h1>
+        <p class="score-text">Puntaje Obtenido: <span id="score"></span>/250</p>
+
+        <div id="progress-bar">
+            <div id="progress"></div>
+        </div>
+
+        <div id="visual-result">
+            <span id="visual-result-icon"></span>
+            <p id="visual-result-text"></p>
+        </div>
+
+        <div class="loader-container">
+            <p>Reflexionando sobre tus respuestas...</p>
+            <img src="tenor.gif" alt="Cargando Nivel..." class="loader-gif">
+            <p>Serás redirigido en un momento...</p>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            // --- CÁLCULO DE RESULTADOS (sin cambios) ---
+            const result = sessionStorage.getItem('testResult') || 0;
+            const nombre = sessionStorage.getItem('nombreUsuario') || 'Jugador';
+            const totalQuestions = 50;
+            const percentage = (result / (totalQuestions * 5)) * 100;
+
+            // --- ACTUALIZACIÓN DE LA INTERFAZ ---
+            document.getElementById('nombreUsuario').innerText = "Analizando resultados para " + nombre + "...";
+            document.getElementById('score').innerText = result;
+
+            // --- LÓGICA DE LA BARRA DE PROGRESO Y REVELACIÓN ---
+            const progressBar = document.getElementById('progress');
+            setTimeout(() => {
+                progressBar.style.width = percentage + '%';
+            }, 500);
+
+            // --- NUEVO: LÓGICA DEL RESULTADO VISUAL ---
+            const visualResult = document.getElementById('visual-result');
+            const visualIcon = document.getElementById('visual-result-icon');
+            const visualText = document.getElementById('visual-result-text');
+
+            // Oculta el resultado visual hasta que la barra termine
+            setTimeout(() => {
+                if (percentage <= 33) {
+                    visualIcon.innerText = '🌱';
+                    visualText.innerText = 'Nivel Inicial';
+                    visualResult.className = 'level-low';
+                } else if (percentage <= 66) {
+                    visualIcon.innerText = '🌿';
+                    visualText.innerText = 'Nivel Intermedio';
+                    visualResult.className = 'level-moderate';
+                } else {
+                    visualIcon.innerText = '🌸';
+                    visualText.innerText = 'Nivel Avanzado';
+                    visualResult.className = 'level-high';
+                }
+                visualResult.style.display = 'flex'; // Muestra el resultado
+            }, 2000); // Aparece después de 2 segundos
+
+            // --- REDIRECCIÓN (sin cambios) ---
+            let redirectPage = 'nivel' + Math.ceil(percentage / 10) + '.html';
+            setTimeout(() => {
+                window.location.href = redirectPage;
+            }, 10000);
+        }
+    </script>
+</body>
+</html>

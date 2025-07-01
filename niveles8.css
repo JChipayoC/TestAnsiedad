@@ -1,0 +1,195 @@
+/* --- Estilos Generales --- */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Poppins', 'Arial', sans-serif;
+    color: #3d3d3d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* --- Animaciones --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes backgroundTension {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes urgentGlow {
+    0% { box-shadow: 0 0 15px 5px rgba(169, 68, 66, 0.5); }
+    50% { box-shadow: 0 0 25px 10px rgba(169, 68, 66, 0.8); }
+    100% { box-shadow: 0 0 15px 5px rgba(169, 68, 66, 0.5); }
+}
+
+/* --- Contenedor de Botones --- */
+.button-container {
+    width: 100%;
+    max-width: 900px;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+/* --- Contenedor de Resultados --- */
+.result-container {
+    width: 100%;
+    max-width: 900px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* --- Botones --- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #5c3d78;
+    border: 2px solid #5c3d78;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4a2f60;
+    border-color: #4a2f60;
+    transform: translateY(-3px);
+}
+
+/* --- Títulos y Texto --- */
+h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px;
+    background: linear-gradient(45deg, #684291, #5c3d78);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+    text-align: left;
+}
+
+strong {
+    font-weight: 700;
+}
+
+
+/* ================================================================
+   ESTILOS ESPECÍFICOS DEL NIVEL 8
+================================================================ */
+
+body.nivel8 {
+    /* Fondo degradado con textura suave de tensión */
+    background: linear-gradient(-45deg, #F5C6CB, #dc3545, #b85c5c, #F5C6CB);
+    background-size: 400% 400%;
+    animation: backgroundTension 12s ease infinite;
+}
+
+body.nivel8 .result-container {
+    /* Elementos de alerta: borde grueso y sombra brillante animada */
+    border: 5px solid #a94442;
+    animation: fadeInUp 0.8s ease-out forwards, urgentGlow 1.5s ease-in-out infinite;
+    /* Textura de alerta sutil en el fondo de la tarjeta */
+    background-color: #fff;
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(248, 215, 218, 0.3),
+        rgba(248, 215, 218, 0.3) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+}
+
+/* Iconografía grande y visible */
+body.nivel8 h2 {
+    font-weight: 800; /* Tipografía más pesada */
+    color: #a94442;
+}
+body.nivel8 h2::before {
+    content: "⚠️🛑";
+    margin-right: 15px;
+    font-size: 1.5em; /* Iconos más grandes */
+    animation: urgentGlow 1.5s ease-in-out infinite; /* Sincronizar el brillo */
+}
+
+/* Tipografía negrita y estructurada */
+body.nivel8 strong {
+    color: #a94442;
+    font-weight: 800;
+}
+body.nivel8 p {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #F5C6CB;
+}
+body.nivel8 p:last-child {
+    border-bottom: none;
+}
+
+
+/* Título principal con el tema de máxima alerta */
+body.nivel8 h1 {
+    background: linear-gradient(45deg, #c9302c, #a94442);
+    font-weight: 800;
+}
+
+/* Botones de acción inmediata */
+body.nivel8 .btn {
+    background-color: #a94442;
+    border-color: #a94442;
+}
+body.nivel8 .btn:hover {
+    background-color: #843534;
+    border-color: #843534;
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+    .button-container {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .result-container {
+        padding: 25px;
+    }
+    h1 { font-size: 24px; }
+    h2 {
+        font-size: 24px;
+        flex-direction: column;
+    }
+    h2::before {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    p { font-size: 16px; }
+}

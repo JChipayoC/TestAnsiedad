@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Autoayuda</title>
+    <link rel="stylesheet" href="test.css">
+    <script>
+        let currentQuestionIndex = 0;
+        let answers = [];
+        let questions = []; // Almacenar preguntas aquí
+
+        // --- LÓGICA DE LA APLICACIÓN ---
+
+        // Función para obtener el nombre de la URL
+        function obtenerNombre() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const nombre = urlParams.get('nombre') || "Usuario"; // Nombre por defecto
+            document.getElementById("nombreUsuario").innerText = "Hola, " + nombre + ". ¡Vamos a comenzar!";
+            sessionStorage.setItem('nombreUsuario', nombre);
+        }
+
+        // Función para cargar preguntas desde el archivo JSON
+        async function cargarPreguntas() {
+            try {
+                const res = await fetch('quest.json');
+                questions = await res.json();
+            } catch (error) {
+                console.error("No se pudieron cargar las preguntas:", error);
+                document.getElementById('question-text').innerText = "Error: No se pudieron cargar las preguntas. Revisa que el archivo 'quest.json' exista.";
+            }
+        }
+
+        // Muestra la pregunta actual y actualiza la animación
+        function showQuestion(questionText) {
+            const questionContainer = document.getElementById('question-container');
+            const questionTextElement = document.getElementById('question-text');
+
+            questionContainer.classList.remove('fade-in'); // Prepara para la animación
+
+            setTimeout(() => {
+                questionTextElement.innerText = questionText;
+                questionContainer.classList.add('fade-in'); // Animación de entrada
+            }, 150); // Pequeña espera para que la animación sea fluida
+        }
+
+        // Guarda la respuesta seleccionada
+        function saveAnswer() {
+            const selected = document.querySelector('input[name="answer"]:checked');
+            if (!selected) {
+                alert('Por favor selecciona una respuesta para continuar.');
+                return false;
+            }
+            answers[currentQuestionIndex] = parseInt(selected.value);
+            return true;
+        }
+
+        // ✨ Función para actualizar la barra de progreso
+        function updateProgress() {
+            const progressText = document.getElementById('progress-text');
+            const progressFlowers = document.getElementById('progress-flowers');
+            const totalQuestions = questions.length;
+
+            if (totalQuestions > 0) {
+                progressText.innerText = `Pregunta ${currentQuestionIndex + 1} de ${totalQuestions}`;
+
+                let flowersHtml = '';
+                for (let i = 0; i < totalQuestions; i++) {
+                    flowersHtml += (i <= currentQuestionIndex) ? '🌸' : '⚪';
+                }
+                progressFlowers.innerHTML = flowersHtml;
+            }
+        }
+
+        // Avanza a la siguiente pregunta o finaliza el test
+        async function nextQuestion() {
+            if (!saveAnswer()) return;
+
+            // Desmarcar la selección actual
+            document.querySelector('input[name="answer"]:checked').checked = false;
+
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex >= questions.length) {
+                const totalScore = answers.reduce((a, b) => a + b, 0);
+                sessionStorage.setItem('testResult', totalScore);
+                window.location.href = 'resultados.html';
+            } else {
+                showQuestion(questions[currentQuestionIndex].pregunta);
+                updateProgress(); // Actualiza la barra de progreso
+            }
+        }
+
+        // 🎧 Función para el modo relajación
+        function toggleRelaxationMode() {
+            const audio = document.getElementById('relaxation-audio');
+            const button = document.getElementById('relaxation-button');
+            if (audio.paused) {
+                audio.play();
+                button.innerHTML = '⏸️'; // Cambia a ícono de pausa
+            } else {
+                audio.pause();
+                button.innerHTML = '🎵'; // Vuelve al ícono de música
+            }
+        }
+
+        // Inicialización del test
+        async function init() {
+            obtenerNombre();
+            await cargarPreguntas();
+            if (questions.length > 0) {
+                showQuestion(questions[currentQuestionIndex].pregunta);
+                updateProgress();
+            }
+        }
+
+        // Ejecutar al cargar la página
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <div class="bubbles-container">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <a href="index.html" class="back-button" title="Volver al Inicio">←</a>
+
+    <button id="relaxation-button" onclick="toggleRelaxationMode()" title="Modo Relajación">🎵</button>
+    <audio id="relaxation-audio" src="ruta/a/tu/musica.mp3" loop></audio>
+
+    <h1 id="nombreUsuario"></h1>
+
+    <div class="main-container">
+        <div id="progress-container">
+            <div id="progress-text"></div>
+            <div id="progress-flowers"></div>
+        </div>
+
+        <div id="question-container">
+            <div class="question-box">
+                <p id="question-text"></p>
+            </div>
+            <form id="quiz-form" onsubmit="event.preventDefault(); nextQuestion();">
+                <div class="scale-container">
+                    <label><input type="radio" name="answer" value="1"> Nunca 😌</label>
+                    <label><input type="radio" name="answer" value="2"> Casi nunca 🙂</label>
+                    <label><input type="radio" name="answer" value="3"> A veces 😐</label>
+                    <label><input type="radio" name="answer" value="4"> Casi siempre 😟</label>
+                    <label><input type="radio" name="answer" value="5"> Siempre 😣</label>
+                </div>
+                <button type="submit">Siguiente</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

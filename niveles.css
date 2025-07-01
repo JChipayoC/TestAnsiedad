@@ -1,0 +1,274 @@
+/* --- General Styles --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'Arial', sans-serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    transition: background 2s ease;
+}
+
+/* --- Keyframes para Animaciones --- */
+@keyframes backgroundPan {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse-shadow {
+    0% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(217, 83, 79, 0.7);
+    }
+    70% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 20px rgba(217, 83, 79, 0);
+    }
+    100% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(217, 83, 79, 0);
+    }
+}
+
+@keyframes emergency-border {
+    50% {
+        border-color: #ffdddd;
+    }
+}
+
+/* --- Result Container (Base) --- */
+.result-container {
+    position: relative; /* Clave para posicionar los botones */
+    width: 80%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    color: #333;
+    animation: fadeInUp 0.8s ease-out forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Botones --- */
+.button-container {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #5c3d78;
+    border: 2px solid #5c3d78;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4a2f60;
+    border-color: #4a2f60;
+    transform: translateY(-3px);
+}
+
+.btn.btn-secondary {
+    background-color: transparent;
+    color: #5c3d78;
+}
+
+.btn.btn-secondary:hover {
+    background-color: #5c3d78;
+    color: #fff;
+}
+
+/* --- Títulos y Texto (Base) --- */
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px;
+    background: linear-gradient(45deg, #684291, #5c3d78);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    transition: color 0.5s ease;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+strong {
+    font-weight: 700;
+    transition: color 0.5s ease;
+}
+
+/* ================================================================
+   ESTILOS ESPECÍFICOS POR NIVEL
+================================================================ */
+
+/* --- Nivel 1: Muy Bajo --- */
+body.nivel1 {
+    background: linear-gradient(270deg, #e3fcec, #d4edda, #e0f7fa);
+    background-size: 400% 400%;
+    animation: backgroundPan 15s ease infinite;
+}
+body.nivel1 h2, body.nivel1 strong { color: #28a745; }
+
+/* --- Nivel 2: Bajo --- */
+body.nivel2 {
+    background: linear-gradient(270deg, #e3fcec, #cceaff, #b3e5fc);
+    background-size: 400% 400%;
+    animation: backgroundPan 15s ease infinite;
+}
+body.nivel2 h2, body.nivel2 strong { color: #17a2b8; }
+
+/* --- Nivel 3: Ligeramente Elevado --- */
+body.nivel3 {
+    background: linear-gradient(270deg, #fff8dc, #fff4e3, #fffbe7);
+    background-size: 400% 400%;
+    animation: backgroundPan 15s ease infinite;
+}
+body.nivel3 h2, body.nivel3 strong { color: #ffc107; }
+body.nivel3 .result-container { border-color: rgba(255, 193, 7, 0.3); }
+
+/* --- Nivel 4: Moderado Bajo --- */
+body.nivel4 {
+    background: linear-gradient(270deg, #fff3cd, #ffefd5, #ffe8cc);
+    background-size: 400% 400%;
+    animation: backgroundPan 15s ease infinite;
+}
+body.nivel4 h2, body.nivel4 strong { color: #fd7e14; }
+body.nivel4 .result-container { border: 2px solid #ffc107; }
+
+/* --- Nivel 5: Moderado --- */
+body.nivel5 {
+    background: linear-gradient(270deg, #ffdab9, #ffccb3, #ffd8bf);
+    background-size: 400% 400%;
+    animation: backgroundPan 15s ease infinite;
+}
+body.nivel5 h2, body.nivel5 strong { color: #fd7e14; }
+body.nivel5 .result-container { box-shadow: 0 10px 30px rgba(253, 126, 20, 0.2); }
+
+/* --- Nivel 6: Moderadamente Alto --- */
+body.nivel6 {
+    background: linear-gradient(270deg, #ffa07a, #ffb399, #ff8a65);
+    background-size: 400% 400%;
+    animation: backgroundPan 15s ease infinite;
+}
+body.nivel6 h2, body.nivel6 strong { color: #dc3545; font-weight: 700; }
+
+/* --- Nivel 7: Alto --- */
+body.nivel7 {
+    background: linear-gradient(270deg, #f8d7da, #fbc2c4, #f7b1b3);
+    background-size: 400% 400%;
+    animation: backgroundPan 15s ease infinite;
+}
+body.nivel7 h1 { background: linear-gradient(45deg, #dc3545, #b02a37); }
+body.nivel7 h2, body.nivel7 strong { color: #dc3545; }
+body.nivel7 .result-container { border: 2px solid #dc3545; }
+
+/* --- Nivel 8: Muy Alto --- */
+body.nivel8 {
+    background: linear-gradient(270deg, #f5c6cb, #f1b0b5, #f8d7da);
+    background-size: 400% 400%;
+    animation: backgroundPan 15s ease infinite;
+}
+body.nivel8 h1 { background: linear-gradient(45deg, #c82333, #a71d2a); }
+body.nivel8 h2, body.nivel8 strong { color: #c82333; }
+body.nivel8 .result-container { box-shadow: 0 0 25px rgba(200, 35, 51, 0.3); }
+
+/* --- Nivel 9: Crítico --- */
+body.nivel9 {
+    background: linear-gradient(270deg, #d9534f, #c9302c, #d6615d);
+    background-size: 400% 400%;
+    animation: backgroundPan 15s ease infinite;
+}
+body.nivel9 h1 { background: linear-gradient(45deg, #a1231f, #7c1b18); }
+body.nivel9 h2, body.nivel9 strong { color: #d9534f; }
+body.nivel9 .result-container {
+    border: 3px solid #d9534f;
+    animation: fadeInUp 0.8s ease-out forwards, pulse-shadow 2s infinite 1s;
+}
+
+/* --- Nivel 10: Emergencia --- */
+body.nivel10 {
+    background: linear-gradient(270deg, #380d10, #721c24, #380d10);
+    background-size: 400% 400%;
+    animation: backgroundPan 10s ease infinite;
+}
+body.nivel10 .result-container {
+    background: rgba(245, 198, 203, 0.9);
+    color: #721c24;
+    border: 4px solid #721c24;
+    animation: fadeInUp 0.8s ease-out forwards, emergency-border 1.5s step-end infinite 1s;
+}
+body.nivel10 h1 { background: #721c24; }
+body.nivel10 h2, body.nivel10 strong { color: #721c24; font-weight: 900; }
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+    .result-container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .button-container {
+        position: static;
+        margin-top: 20px;
+        margin-bottom: 10px; /* Espacio extra abajo */
+        justify-content: center;
+        order: 3; /* Mueve los botones al final en el orden flex */
+    }
+
+    h1 {
+        font-size: 28px;
+        order: 1;
+    }
+    
+    h2, p {
+        order: 2;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}

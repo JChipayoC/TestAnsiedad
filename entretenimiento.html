@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entretenimiento para Reducir la Ansiedad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Sans+MS&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="entretenimiento.css">
+</head>
+<body>
+
+    <a href="index.html" class="back-button" title="Volver al Inicio">←</a>
+
+    <header class="main-header">
+        <h1>Tu Espacio de Entretenimiento</h1>
+    </header>
+
+    <main class="main-container">
+        
+        <section class="card wellness-section">
+            <h2>Consejos de Bienestar ✨</h2>
+            <p id="wellness-tip">Haz clic en el botón para recibir un consejo que te ayude a sentirte mejor.</p>
+            <button id="wellness-btn">Mostrar Nuevo Consejo</button>
+        </section>
+
+        <section class="card game-section">
+            <h2>¡Juega para Desestresarte! 🎲</h2>
+            <p>Adivina un número entre 1 y 100:</p>
+            <div class="game-input-group">
+                <input type="number" id="userInput" placeholder="Introduce un número" />
+                <button id="guess-btn">Comprobar</button>
+            </div>
+            <p id="gameMessage"></p>
+        </section>
+
+        <section class="card music-section">
+            <h2>Música para tu Alma 🎶</h2>
+            <p>Sonando ahora: <strong id="current-song-title">Ninguna</strong></p>
+            <audio id="audio-player" controls></audio>
+            <ul id="playlist" class="playlist-container">
+                </ul>
+        </section>
+
+        <section class="card memory-game">
+            <h2>Juego de Memoria 🧠</h2>
+            <p>Haz clic en las cartas para encontrar los pares.</p>
+            <div class="memory-board" id="memory-board"></div>
+            <p id="memory-message"></p>
+        </section>
+
+        <section class="card video-section">
+            <h2>Videos para Relajarte ⏯️</h2>
+            <p>Elige una categoría y disfruta de un momento de calma.</p>
+            <select id="videoCategory"></select>
+            <div class="videos-container" id="videos-container"></div>
+        </section>
+        
+        <section class="card bubble-wrap-section">
+            <h2>Momento para Explotar ⚪</h2>
+            <p>Haz clic en las burbujas para una satisfacción instantánea.</p>
+            <div id="bubble-wrap-container" class="bubble-wrap-container">
+                </div>
+            <button id="bubble-reset-btn">Reiniciar</button>
+        </section>
+
+        <section class="card mandala-section">
+            <h2>Crea tu Mandala 🎨</h2>
+            <p>Dibuja en el lienzo y observa cómo se crea la magia.</p>
+            <div class="mandala-controls">
+                <label for="mandala-color">Color:</label>
+                <input type="color" id="mandala-color" value="#6a0dad">
+                <label for="mandala-linewidth">Grosor:</label>
+                <input type="range" id="mandala-linewidth" min="1" max="20" value="5">
+                <button id="mandala-clear-btn">Limpiar</button>
+            </div>
+            <canvas id="mandala-canvas"></canvas>
+        </section>
+        
+    </main>
+
+    <script src="entretenimiento.js" defer></script>
+</body>
+</html>

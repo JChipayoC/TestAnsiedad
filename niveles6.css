@@ -1,0 +1,199 @@
+/* --- Estilos Generales --- */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Poppins', 'Arial', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column; /* Alinea los elementos verticalmente */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    transition: background 2s ease;
+    box-sizing: border-box;
+}
+
+/* --- Keyframes para Animaciones --- */
+@keyframes backgroundPan {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-border {
+    0% { border-color: #D9534F; }
+    50% { border-color: #ffb8b6; }
+    100% { border-color: #D9534F; }
+}
+.nav-container {
+    width: 100%;
+    max-width: 980px;
+    text-align: right;
+    padding: 20px 0;
+}
+
+
+/* --- Contenedor de Resultados --- */
+.result-container {
+    width: 100%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.8s ease-out forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px solid transparent;
+}
+
+/* --- Botones --- */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #5c3d78;
+    border: 2px solid #5c3d78;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4a2f60;
+    border-color: #4a2f60;
+    transform: translateY(-3px);
+}
+
+/* --- Títulos y Texto --- */
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px;
+    background: linear-gradient(45deg, #684291, #5c3d78);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+strong {
+    font-weight: 700;
+}
+.level-icon {
+    font-size: 1.1em; /* Ajuste para el ícono de alerta */
+    margin-right: 15px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 1.7;
+    font-weight: 300;
+}
+/* --- Barra de Progreso --- */
+.progress-bar-container {
+    background-color: #e9ecef;
+    border-radius: 1rem;
+    padding: 4px;
+    margin-top: 30px;
+}
+.progress-bar {
+    height: 12px;
+    border-radius: 1rem;
+    transition: width 1.5s ease-out;
+}
+
+
+/* ================================================================
+   ESTILOS ESPECÍFICOS DEL NIVEL 6
+================================================================ */
+
+body.nivel6 {
+    /* Fondo con gradiente animado para simular ondas irregulares */
+    background: linear-gradient(-45deg, #FFA07A, #FF6347, #FF4500, #D9534F);
+    background-size: 400% 400%;
+    animation: backgroundPan 15s ease infinite;
+}
+
+/* Contenedor con borde rojo pulsante */
+body.nivel6 .result-container {
+    animation: fadeInUp 0.8s ease-out forwards, pulse-border 2.5s infinite;
+}
+
+/* Iconografía y tipografía pesada para el título */
+body.nivel6 h2 {
+    font-weight: 800; /* Tipografía más pesada */
+    color: #C13F3B; /* Rojo oscuro */
+}
+body.nivel6 h2::before {
+    content: "🌀😰";
+    margin-right: 15px;
+}
+
+/* Paleta de colores para textos importantes */
+body.nivel6 strong {
+    color: #C13F3B;
+}
+
+/* Título principal con tema rojo/naranja intenso */
+body.nivel6 h1 {
+    font-weight: 800; /* Tipografía más pesada */
+    background: linear-gradient(45deg, #D9534F, #FF4500); /* Rojo a NaranjaRojo */
+}
+
+/* Botones de acción visibles con tema rojo */
+body.nivel6 .btn {
+    background-color: #D9534F; /* Rojo 'Danger' */
+    border-color: #D9534F;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(217, 83, 79, 0.4);
+}
+body.nivel6 .btn:hover {
+    background-color: #C9302C;
+    border-color: #C9302C;
+    box-shadow: 0 6px 20px rgba(217, 83, 79, 0.5);
+}
+
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+    .button-container {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .result-container {
+        padding: 20px;
+    }
+    h1 { font-size: 24px; }
+    h2 { font-size: 22px; }
+    p { font-size: 16px; }
+}

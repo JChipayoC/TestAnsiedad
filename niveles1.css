@@ -1,0 +1,137 @@
+/* --- Estilos Optimizados para Nivel 1 --- */
+
+/* --- Estilos Generales --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'Arial', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column; /* Organiza los elementos verticalmente */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background 2s ease;
+}
+
+/* Animación de entrada (la única que se usa en esta página) */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Contenedor de Navegación Superior --- */
+.nav-container {
+    width: 100%;
+    max-width: 980px; /* Alineado con el contenedor principal */
+    text-align: right;
+    padding: 20px 0;
+}
+
+/* --- Contenedor de Resultados --- */
+.result-container {
+    width: 80%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* --- Botón (estilo único para Nivel 1) --- */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Estilos específicos del tema verde */
+    background-color: #28a745;
+    border: 2px solid #28a745;
+    color: #fff;
+}
+
+.btn:hover {
+    background-color: #218838;
+    border-color: #218838;
+    transform: translateY(-3px);
+}
+
+/* --- Títulos y Texto --- */
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Estilo específico del tema verde */
+    background: linear-gradient(45deg, #28a745, #218838);
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.level-icon {
+    font-size: 1.2em;
+    margin-right: 15px;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 1.7;
+    font-weight: 300; /* Tipografía más delgada */
+}
+
+/* --- Estilos Específicos del Nivel 1 --- */
+body.nivel1 {
+    /* Fondo que simula cielo y naturaleza */
+    background: linear-gradient(180deg, #a8e0ff 0%, #d4edda 100%);
+}
+
+body.nivel1 h2, 
+body.nivel1 strong { 
+    color: #28a745; /* Color de acento verde */
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .result-container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+    
+    p {
+        font-size: 16px;
+    }
+}

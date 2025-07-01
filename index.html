@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Autoayuda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Plataforma de Autoayuda</h1>
+        <div class="menu-icon">
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+
+    <main>
+        <img src="img01.png" alt="Ilustración de una persona meditando y manejando sus emociones" class="main-image">
+
+        <p class="descripcion">
+            Este módulo te ayudará a entender y manejar tus emociones como la ansiedad, tristeza o miedo. <br>
+            Encontrarás técnicas sencillas, frases motivadoras y actividades prácticas para sentirte mejor cada día.
+            <br>
+            Es un espacio seguro, hecho para ti.
+        </p>
+
+        <div class="botones">
+            <a href="entretenimiento.html" class="btn interactivo">Entretenimiento</a>
+            <a href="#" class="btn test" onclick="iniciarTest()">Iniciar Test</a>
+        </div>
+    </main>
+
+    <div id="ventanaEmergente" class="ventana-emergente">
+        <div class="contenido-ventana">
+            <h2>¡Bienvenido! Por favor ingresa tu nombre</h2>
+            <input type="text" id="nombreInput" placeholder="Tu nombre aquí" />
+            <div class="botones-ventana">
+                <button onclick="redirigirTest()">Continuar</button>
+                <button onclick="cerrarVentana()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Se encapsula el código en un listener para asegurar que el DOM esté cargado
+        document.addEventListener('DOMContentLoaded', function () {
+            const nombreInput = document.getElementById("nombreInput");
+
+            // Añade un listener para la tecla "Enter" para mejorar la experiencia de usuario
+            nombreInput.addEventListener("keydown", function (event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // Evita cualquier comportamiento por defecto del Enter
+                    redirigirTest();
+                }
+            });
+        });
+
+        // Función para abrir la ventana emergente personalizada
+        function iniciarTest() {
+            document.getElementById("ventanaEmergente").style.display = "flex";
+            // Pone el foco en el input al abrir la ventana
+            document.getElementById("nombreInput").focus();
+        }
+
+        // Función para capturar el nombre y redirigir al test
+        function redirigirTest() {
+            // Se usa .trim() para eliminar espacios en blanco al inicio y al final
+            let nombre = document.getElementById("nombreInput").value.trim();
+            if (nombre) {
+                // Redirige al test pasando el nombre como parámetro en la URL
+                window.location.href = "test.html?nombre=" + encodeURIComponent(nombre);
+            } else {
+                alert("Por favor, ingresa tu nombre para comenzar.");
+            }
+        }
+
+        // Función para cerrar la ventana emergente
+        function cerrarVentana() {
+            document.getElementById("ventanaEmergente").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

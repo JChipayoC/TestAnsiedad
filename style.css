@@ -1,0 +1,190 @@
+/* --- OPTIMIZACIÓN: Variables Globales para Colores y Fuentes --- */
+/* Esto facilita el mantenimiento y cambio de la paleta de colores en el futuro */
+:root {
+    --bg-color: #e9d4f1;
+    --text-color: #2e2e2e;
+    --primary-purple: #6a0dad;
+    --primary-purple-hover: #4b0082;
+    --secondary-purple: #9c77d4;
+    --accent-purple: #7d59c8;
+    --font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* --- OPTIMIZACIÓN: Reseteo Básico y Modelo de Caja --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    text-align: center;
+}
+
+header {
+    position: relative;
+    padding: 20px; /* Se usa un padding más consistente */
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #000;
+    margin: 0; /* Se quita el margen por defecto */
+}
+
+.menu-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Centrado vertical perfecto */
+    right: 25px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu-icon div {
+    width: 35px;
+    height: 6px;
+    background-color: var(--accent-purple);
+    margin: 6px 0;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+
+/* --- RESPONSIVE: Estilo de la imagen principal --- */
+.main-image {
+    margin-top: 20px;
+    max-width: 100%; /* La imagen se ajustará al ancho del contenedor */
+    height: auto;   /* Mantiene la proporción de la imagen */
+    width: 700px;   /* Mantiene un tamaño máximo en pantallas grandes */
+}
+
+.descripcion {
+    font-size: 1.1rem;
+    margin: 25px auto; /* Aumenta el margen vertical para más espacio */
+    width: 90%;
+    max-width: 900px;
+    line-height: 1.6;
+}
+
+.botones {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-weight: bold;
+    flex-wrap: wrap; /* Permite que los botones pasen a la siguiente línea si no caben */
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px; /* Padding ligeramente mayor para mejor tacto */
+    text-decoration: none;
+    border-radius: 8px; /* Bordes más redondeados */
+    font-size: 1.1em;
+    cursor: pointer;
+    border: none;
+    color: white;
+    transition: transform 0.2s ease, background-color 0.2s ease; /* Transición más suave */
+}
+
+.btn:hover {
+    transform: scale(1.05); /* El efecto hover se mantiene */
+}
+
+/* --- OPTIMIZACIÓN: Se consolida el estilo de los botones con el mismo color --- */
+.interactivo,
+.test {
+    background-color: var(--secondary-purple);
+}
+
+.interactivo:hover,
+.test:hover {
+    background-color: var(--primary-purple); /* Oscurece al pasar el cursor */
+}
+
+/* --- Estilos de la Ventana Emergente (Popup) --- */
+.ventana-emergente {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo ligeramente más oscuro */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 15px; /* Añade padding para que la ventana no pegue a los bordes en móvil */
+}
+
+.contenido-ventana {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%; /* Ancho completo en móvil */
+    max-width: 350px; /* Ancho máximo para pantallas más grandes */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.contenido-ventana h2 {
+    margin-top: 0; /* Se quita el margen superior */
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.botones-ventana {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.botones-ventana button {
+    padding: 10px 20px;
+    background-color: var(--primary-purple);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.botones-ventana button:hover {
+    background-color: var(--primary-purple-hover);
+}
+
+/* --- RESPONSIVE: Media Query para dispositivos móviles y tablets --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Reduce el tamaño del título en móviles */
+    }
+
+    .descripcion {
+        font-size: 1rem;
+    }
+
+    .botones {
+        flex-direction: column; /* Apila los botones verticalmente */
+        align-items: center; /* Centra los botones apilados */
+    }
+
+    .btn {
+        width: 80%; /* Los botones ocupan más ancho para ser fáciles de tocar */
+        max-width: 300px;
+    }
+}

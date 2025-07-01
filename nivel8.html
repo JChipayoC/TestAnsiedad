@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel 8: Muy alto</title>
+    <link rel="stylesheet" href="niveles8.css">
+</head>
+
+<body class="nivel8">
+    <div class="button-container">
+        <a href="index.html" class="btn">Volver al Inicio</a>
+    </div>
+    <div class="result-container">
+        <h1 id="nombreUsuario"></h1> <!-- Mostrar el nombre aquí -->
+        <h2>Nivel 8: Muy alto</h2>
+        <p><strong>Retroalimentación:</strong> Tu ansiedad está muy alta y puede afectar tu salud física y emocional.
+        </p>
+        <p><strong>Consejos:</strong> Busca ayuda profesional inmediata. No enfrentes la ansiedad sola; apóyate en el
+            refugio, familiares o amigos.</p>
+        <p><strong>Guía:</strong> Cumple con el plan terapéutico recomendado. Si tienes pensamientos negativos o te
+            sientes abrumada, comunícalo con un profesional. Usa técnicas de grounding para volver al presente cuando te
+            sientas sobrepasada.</p>
+    </div>
+    <script>
+        window.onload = function () {
+            // Obtener el nombre desde sessionStorage
+            const nombre = sessionStorage.getItem('nombreUsuario');
+            if (nombre) {
+                document.getElementById('nombreUsuario').innerText = "Hola, " + nombre + ".";
+            } else {
+                document.getElementById('nombreUsuario').innerText = "Resultados";
+            }
+        }
+    </script>
+</body>
+
+</html>
