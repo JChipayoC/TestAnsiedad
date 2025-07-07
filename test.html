@@ -32,6 +32,11 @@
             }
         }
 
+        function cerrarModal() {
+            document.getElementById('instruction-modal').style.display = 'none';
+        }
+
+
         // Muestra la pregunta actual y actualiza la animación
         function showQuestion(questionText) {
             const questionContainer = document.getElementById('question-container');
@@ -163,6 +168,33 @@
             </form>
         </div>
     </div>
+    <footer>
+        <h3>🔍 Fuentes de este test</h3>
+        <p>Basado en escalas científicas adaptadas para adolescentes:</p>
+
+        <li>Espinosa, V. et al. (2022). Escala EIDAN – Revista Iberoamericana de Diagnóstico y Evaluación.</li>
+        <li>García-Pérez, A. & Magaz, M. (1998). Escala EPANS – Papeles del Psicólogo.</li>
+        <li>Olivares, J. et al. (2004). Escala EDAS – Psicología Conductual.</li>
+
+        <p><em>Este test no reemplaza una consulta con profesionales. Si algo te preocupa, ¡pide ayuda! 📖</em></p>
+    </footer>
+
+    <div id="instruction-modal" class="modal">
+        <div class="modal-content">
+            <h2>📝 Instrucciones antes de comenzar</h2>
+            <p>
+                Lee con atención cada pregunta.<br>
+                Selecciona la opción que mejor refleje cómo te has sentido <strong>últimamente</strong>.<br>
+                Responde con sinceridad, no hay respuestas correctas o incorrectas.<br>
+                El test es <strong>anónimo</strong> y no guarda información personal.<br>
+                Puedes activar el <strong>modo relajación 🎵</strong> si deseas hacerlo en un ambiente tranquilo.
+            </p>
+            <p>Cuando estés listo, comienza con la primera pregunta. ¡Tómate tu tiempo!</p>
+            <button onclick="cerrarModal()">Comenzar</button>
+        </div>
+    </div>
+
+
 </body>
 
 </html>
