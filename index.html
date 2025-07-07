@@ -1,87 +1,166 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma de Autoayuda</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plataforma de Autoayuda</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <header>
-        <h1>Plataforma de Autoayuda</h1>
-        <div class="menu-icon">
-            <div></div>
-            <div></div>
-        </div>
-    </header>
 
-    <main>
-        <img src="img01.png" alt="Ilustración de una persona meditando y manejando sus emociones" class="main-image">
-
-        <p class="descripcion">
-            Este módulo te ayudará a entender y manejar tus emociones como la ansiedad, tristeza o miedo. <br>
-            Encontrarás técnicas sencillas, frases motivadoras y actividades prácticas para sentirte mejor cada día.
-            <br>
-            Es un espacio seguro, hecho para ti.
-        </p>
-
-        <div class="botones">
-            <a href="entretenimiento.html" class="btn interactivo">Entretenimiento</a>
-            <a href="#" class="btn test" onclick="iniciarTest()">Iniciar Test</a>
-        </div>
-    </main>
-
-    <div id="ventanaEmergente" class="ventana-emergente">
-        <div class="contenido-ventana">
-            <h2>¡Bienvenido! Por favor ingresa tu nombre</h2>
-            <input type="text" id="nombreInput" placeholder="Tu nombre aquí" />
-            <div class="botones-ventana">
-                <button onclick="redirigirTest()">Continuar</button>
-                <button onclick="cerrarVentana()">Cancelar</button>
-            </div>
-        </div>
+  <header>
+    <h1>Plataforma de Autoayuda</h1>
+    <div class="menu-icon">
+      <div></div>
+      <div></div>
     </div>
+  </header>
 
-    <script>
-        // Se encapsula el código en un listener para asegurar que el DOM esté cargado
-        document.addEventListener('DOMContentLoaded', function () {
-            const nombreInput = document.getElementById("nombreInput");
+  <main>
+    <img src="img01.png" alt="Ilustración de una persona meditando y manejando sus emociones" class="main-image" />
 
-            // Añade un listener para la tecla "Enter" para mejorar la experiencia de usuario
-            nombreInput.addEventListener("keydown", function (event) {
-                if (event.key === "Enter") {
-                    event.preventDefault(); // Evita cualquier comportamiento por defecto del Enter
-                    redirigirTest();
-                }
-            });
+    <p class="descripcion">
+      Este módulo te ayudará a entender y manejar tus emociones como la ansiedad, tristeza o miedo. <br>
+      Encontrarás técnicas sencillas, frases motivadoras y actividades prácticas para sentirte mejor cada día. <br>
+      Es un espacio seguro, hecho para ti.
+    </p>
+
+    <div class="botones">
+      <a href="entretenimiento.html" class="btn interactivo">Entretenimiento</a>
+      <a href="#" class="btn test" onclick="iniciarTest()">Iniciar Test</a>
+    </div>
+  </main>
+
+  <!-- Ventana Emergente para el Test -->
+  <div id="ventanaEmergente" class="ventana-emergente">
+    <div class="contenido-ventana">
+      <h2>¡Bienvenido! Por favor ingresa tu nombre</h2>
+      <input type="text" id="nombreInput" placeholder="Tu nombre aquí" />
+      <div class="botones-ventana">
+        <button onclick="redirigirTest()">Continuar</button>
+        <button onclick="cerrarVentana()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón flotante del Directorio -->
+  <button id="directorio-btn" onclick="openModal()">📂 DIRECTORIO</button>
+
+  <!-- Modal del Directorio -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">❌</span>
+      <div class="container">
+        <div class="accordion">
+
+          <!-- Ayuda Psicológica -->
+          <div class="accordion-item">
+            <div class="accordion-header">💜 1. Ayuda Psicológica</div>
+            <div class="accordion-content">
+              <p><strong>📞 Línea 100 - MIMP</strong><br>
+              • Apoyo emocional, orientación psicológica.<br>
+              • Teléfono: <strong>100</strong> (gratuito, 24/7)<br>
+              • 🌐 Web: <a href="https://www.mimp.gob.pe" target="_blank">mimp.gob.pe</a></p>
+
+              <p><strong>🏥 Centro de Salud Mental "María Auxiliadora"</strong><br>
+              • 📍 Av. Pachacútec 2900, SJM<br>
+              • 📞 (01) 510-1673<br>
+              • 🕗 L-V, 8:00 a.m. – 5:00 p.m.<br>
+              • 💬 Psicoterapia y talleres</p>
+            </div>
+          </div>
+
+          <!-- Ayuda Legal -->
+          <div class="accordion-item">
+            <div class="accordion-header">⚖️ 2. Ayuda Legal y Protección</div>
+            <div class="accordion-content">
+              <p><strong>👨‍⚖️ DEMUNA – VMT</strong><br>
+              • 📍 Av. Salvador Allende s/n<br>
+              • 📞 (01) 719-2050 anexo 111<br>
+              • 💬 Orientación legal y protección de derechos</p>
+
+              <p><strong>🚨 Centro Emergencia Mujer – VMT</strong><br>
+              • 📍 Av. Pachacútec 12500, VMT<br>
+              • 📞 (01) 421-1510<br>
+              • 🧠 Atención legal, psicológica y social<br>
+              • 🕗 L-V, 8:00 a.m. – 4:30 p.m.</p>
+            </div>
+          </div>
+
+          <!-- Ayuda Educativa -->
+          <div class="accordion-item">
+            <div class="accordion-header">📚 3. Ayuda Educativa y Reintegración Escolar</div>
+            <div class="accordion-content">
+              <p><strong>🏫 UGEL 01 – Lima Sur</strong><br>
+              • 📍 Av. El Sol 1470, SJM<br>
+              • 📞 (01) 615-5800<br>
+              • 🧾 Matrícula, continuidad y programas<br>
+              • 🌐 Web: <a href="https://www.ugel01.gob.pe" target="_blank">ugel01.gob.pe</a></p>
+
+              <p><strong>💻 Fundación Telefónica – Aula Digital Perú</strong><br>
+              • 🧠 Plataforma educativa gratuita<br>
+              • 🌐 Web: <a href="https://aulas.fundaciontelefonica.com.pe" target="_blank">aulas.fundaciontelefonica.com.pe</a><br>
+              • 🕐 Disponible 24/7</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const nombreInput = document.getElementById("nombreInput");
+      nombreInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          redirigirTest();
+        }
+      });
+
+      document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const item = header.parentElement;
+          const wasActive = item.classList.contains('active');
+          document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+          if (!wasActive) item.classList.add('active');
         });
+      });
+    });
 
-        // Función para abrir la ventana emergente personalizada
-        function iniciarTest() {
-            document.getElementById("ventanaEmergente").style.display = "flex";
-            // Pone el foco en el input al abrir la ventana
-            document.getElementById("nombreInput").focus();
-        }
+    function iniciarTest() {
+      document.getElementById("ventanaEmergente").style.display = "flex";
+      document.getElementById("nombreInput").focus();
+    }
 
-        // Función para capturar el nombre y redirigir al test
-        function redirigirTest() {
-            // Se usa .trim() para eliminar espacios en blanco al inicio y al final
-            let nombre = document.getElementById("nombreInput").value.trim();
-            if (nombre) {
-                // Redirige al test pasando el nombre como parámetro en la URL
-                window.location.href = "test.html?nombre=" + encodeURIComponent(nombre);
-            } else {
-                alert("Por favor, ingresa tu nombre para comenzar.");
-            }
-        }
+    function redirigirTest() {
+      let nombre = document.getElementById("nombreInput").value.trim();
+      if (nombre) {
+        window.location.href = "test.html?nombre=" + encodeURIComponent(nombre);
+      } else {
+        alert("Por favor, ingresa tu nombre para comenzar.");
+      }
+    }
 
-        // Función para cerrar la ventana emergente
-        function cerrarVentana() {
-            document.getElementById("ventanaEmergente").style.display = "none";
-        }
-    </script>
+    function cerrarVentana() {
+      document.getElementById("ventanaEmergente").style.display = "none";
+    }
+
+    function openModal() {
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    window.addEventListener('click', function (e) {
+      if (e.target === document.getElementById('modal')) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
-
 </html>
