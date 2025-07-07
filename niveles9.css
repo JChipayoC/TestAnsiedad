@@ -59,9 +59,9 @@ body {
 /* --- Contenedor de Resultados --- */
 .result-container {
     width: 100%;
-    max-width: 900px;
+    max-width: 1000px;
     background: #fff;
-    padding: 40px;
+    padding: 10px;
     border-radius: 10px;
     animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -84,7 +84,7 @@ body {
 
 /* --- Títulos y Texto --- */
 h1 {
-    font-size: 36px;
+    font-size: 30px;
     margin-bottom: 30px;
     font-weight: 700;
     text-transform: uppercase;
@@ -97,7 +97,7 @@ h1 {
 }
 
 h2 {
-    font-size: 32px;
+    font-size: 25px;
     margin-bottom: 25px;
     display: flex;
     align-items: center;
@@ -115,6 +115,19 @@ strong {
     font-weight: 700;
 }
 
+/* --- Barra de Progreso --- */
+.progress-bar-container {
+    background-color: #e9ecef;
+    border-radius: 1rem;
+    padding: 4px;
+    margin-top: 30px;
+}
+.progress-bar {
+    height: 12px;
+    background-color: #970090; /* Color por defecto, se sobreescribe por nivel */
+    border-radius: 1rem;
+    transition: width 1.5s ease-out;
+}
 
 /* ================================================================
    ESTILOS ESPECÍFICOS DEL NIVEL 9

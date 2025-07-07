@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página Principal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f0ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background-color: #c8a2d9;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #a678c2;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 420px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .modal iframe {
+      width: 100%;
+      border: none;
+      border-radius: 0 0 12px 12px;
+      transition: height 0.3s ease;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 1.5em;
+      color: #777;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    @media (max-width: 480px) {
+      .modal-content {
+        width: 95%;
+        max-height: 95vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button onclick="openModal()">📂 DIRECTORIO</button>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <iframe id="iframe" src="directorio.html"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    window.addEventListener('message', function (event) {
+      if (event.data.iframeHeight) {
+        document.getElementById('iframe').style.height = event.data.iframeHeight + 'px';
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,274 +1,303 @@
-/* --- General Styles --- */
+:root {
+  --bg-color: #e9d4f1;
+  --text-color: #2e2e2e;
+  --primary-purple: #6a0dad;
+  --primary-purple-hover: #4b0082;
+  --secondary-purple: #9c77d4;
+  --accent-purple: #7d59c8;
+  --font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', 'Arial', sans-serif;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    transition: background 2s ease;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  text-align: center;
 }
 
-/* --- Keyframes para Animaciones --- */
-@keyframes backgroundPan {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+header {
+  position: relative;
+  padding: 20px;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+h1 {
+  font-size: 2.5rem;
+  color: #000;
+  margin: 0;
 }
 
-@keyframes pulse-shadow {
-    0% {
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(217, 83, 79, 0.7);
-    }
-    70% {
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 20px rgba(217, 83, 79, 0);
-    }
-    100% {
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(217, 83, 79, 0);
-    }
+.menu-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 25px;
+  cursor: pointer;
+  z-index: 1000;
 }
 
-@keyframes emergency-border {
-    50% {
-        border-color: #ffdddd;
-    }
+.menu-icon div {
+  width: 35px;
+  height: 6px;
+  background-color: var(--accent-purple);
+  margin: 6px 0;
+  border-radius: 5px;
+  transition: 0.4s;
 }
 
-/* --- Result Container (Base) --- */
-.result-container {
-    position: relative; /* Clave para posicionar los botones */
-    width: 80%;
-    max-width: 900px;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 40px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    color: #333;
-    animation: fadeInUp 0.8s ease-out forwards;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.main-image {
+  margin-top: 20px;
+  max-width: 100%;
+  height: auto;
+  width: 700px;
 }
 
-.result-container:hover {
-    transform: scale(1.02);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+.descripcion {
+  font-size: 1.1rem;
+  margin: 25px auto;
+  width: 90%;
+  max-width: 900px;
+  line-height: 1.6;
 }
 
-/* --- Botones --- */
-.button-container {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    display: flex;
-    gap: 15px;
+.botones {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-weight: bold;
+  flex-wrap: wrap;
 }
 
 .btn {
-    display: inline-block;
-    padding: 10px 24px;
-    font-size: 15px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    background-color: #5c3d78;
-    border: 2px solid #5c3d78;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  border: none;
+  color: white;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .btn:hover {
-    background-color: #4a2f60;
-    border-color: #4a2f60;
-    transform: translateY(-3px);
+  transform: scale(1.05);
 }
 
-.btn.btn-secondary {
-    background-color: transparent;
-    color: #5c3d78;
+.interactivo,
+.test {
+  background-color: var(--secondary-purple);
 }
 
-.btn.btn-secondary:hover {
-    background-color: #5c3d78;
-    color: #fff;
+.interactivo:hover,
+.test:hover {
+  background-color: var(--primary-purple);
 }
 
-/* --- Títulos y Texto (Base) --- */
-h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 15px;
-    background: linear-gradient(45deg, #684291, #5c3d78);
-    color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+.ventana-emergente {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 15px;
 }
 
-h2 {
-    font-size: 28px;
-    margin-bottom: 25px;
-    transition: color 0.5s ease;
+.contenido-ventana {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-p {
-    font-size: 18px;
-    margin-bottom: 25px;
-    line-height: 1.7;
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-strong {
-    font-weight: 700;
-    transition: color 0.5s ease;
+.botones-ventana {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
-/* ================================================================
-   ESTILOS ESPECÍFICOS POR NIVEL
-================================================================ */
-
-/* --- Nivel 1: Muy Bajo --- */
-body.nivel1 {
-    background: linear-gradient(270deg, #e3fcec, #d4edda, #e0f7fa);
-    background-size: 400% 400%;
-    animation: backgroundPan 15s ease infinite;
-}
-body.nivel1 h2, body.nivel1 strong { color: #28a745; }
-
-/* --- Nivel 2: Bajo --- */
-body.nivel2 {
-    background: linear-gradient(270deg, #e3fcec, #cceaff, #b3e5fc);
-    background-size: 400% 400%;
-    animation: backgroundPan 15s ease infinite;
-}
-body.nivel2 h2, body.nivel2 strong { color: #17a2b8; }
-
-/* --- Nivel 3: Ligeramente Elevado --- */
-body.nivel3 {
-    background: linear-gradient(270deg, #fff8dc, #fff4e3, #fffbe7);
-    background-size: 400% 400%;
-    animation: backgroundPan 15s ease infinite;
-}
-body.nivel3 h2, body.nivel3 strong { color: #ffc107; }
-body.nivel3 .result-container { border-color: rgba(255, 193, 7, 0.3); }
-
-/* --- Nivel 4: Moderado Bajo --- */
-body.nivel4 {
-    background: linear-gradient(270deg, #fff3cd, #ffefd5, #ffe8cc);
-    background-size: 400% 400%;
-    animation: backgroundPan 15s ease infinite;
-}
-body.nivel4 h2, body.nivel4 strong { color: #fd7e14; }
-body.nivel4 .result-container { border: 2px solid #ffc107; }
-
-/* --- Nivel 5: Moderado --- */
-body.nivel5 {
-    background: linear-gradient(270deg, #ffdab9, #ffccb3, #ffd8bf);
-    background-size: 400% 400%;
-    animation: backgroundPan 15s ease infinite;
-}
-body.nivel5 h2, body.nivel5 strong { color: #fd7e14; }
-body.nivel5 .result-container { box-shadow: 0 10px 30px rgba(253, 126, 20, 0.2); }
-
-/* --- Nivel 6: Moderadamente Alto --- */
-body.nivel6 {
-    background: linear-gradient(270deg, #ffa07a, #ffb399, #ff8a65);
-    background-size: 400% 400%;
-    animation: backgroundPan 15s ease infinite;
-}
-body.nivel6 h2, body.nivel6 strong { color: #dc3545; font-weight: 700; }
-
-/* --- Nivel 7: Alto --- */
-body.nivel7 {
-    background: linear-gradient(270deg, #f8d7da, #fbc2c4, #f7b1b3);
-    background-size: 400% 400%;
-    animation: backgroundPan 15s ease infinite;
-}
-body.nivel7 h1 { background: linear-gradient(45deg, #dc3545, #b02a37); }
-body.nivel7 h2, body.nivel7 strong { color: #dc3545; }
-body.nivel7 .result-container { border: 2px solid #dc3545; }
-
-/* --- Nivel 8: Muy Alto --- */
-body.nivel8 {
-    background: linear-gradient(270deg, #f5c6cb, #f1b0b5, #f8d7da);
-    background-size: 400% 400%;
-    animation: backgroundPan 15s ease infinite;
-}
-body.nivel8 h1 { background: linear-gradient(45deg, #c82333, #a71d2a); }
-body.nivel8 h2, body.nivel8 strong { color: #c82333; }
-body.nivel8 .result-container { box-shadow: 0 0 25px rgba(200, 35, 51, 0.3); }
-
-/* --- Nivel 9: Crítico --- */
-body.nivel9 {
-    background: linear-gradient(270deg, #d9534f, #c9302c, #d6615d);
-    background-size: 400% 400%;
-    animation: backgroundPan 15s ease infinite;
-}
-body.nivel9 h1 { background: linear-gradient(45deg, #a1231f, #7c1b18); }
-body.nivel9 h2, body.nivel9 strong { color: #d9534f; }
-body.nivel9 .result-container {
-    border: 3px solid #d9534f;
-    animation: fadeInUp 0.8s ease-out forwards, pulse-shadow 2s infinite 1s;
+.botones-ventana button {
+  padding: 10px 20px;
+  background-color: var(--primary-purple);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-/* --- Nivel 10: Emergencia --- */
-body.nivel10 {
-    background: linear-gradient(270deg, #380d10, #721c24, #380d10);
-    background-size: 400% 400%;
-    animation: backgroundPan 10s ease infinite;
+.botones-ventana button:hover {
+  background-color: var(--primary-purple-hover);
 }
-body.nivel10 .result-container {
-    background: rgba(245, 198, 203, 0.9);
-    color: #721c24;
-    border: 4px solid #721c24;
-    animation: fadeInUp 0.8s ease-out forwards, emergency-border 1.5s step-end infinite 1s;
-}
-body.nivel10 h1 { background: #721c24; }
-body.nivel10 h2, body.nivel10 strong { color: #721c24; font-weight: 900; }
 
-/* --- Responsividad --- */
+/* Estilos del Directorio */
+#directorio-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 15px 25px;
+  font-size: 1em;
+  background-color: var(--secondary-purple);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#directorio-btn:hover {
+  background-color: var(--primary-purple);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5em;
+  color: #777;
+  cursor: pointer;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #d8cce5;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion-header {
+  background-color: #e8d8f4;
+  cursor: pointer;
+  padding: 14px 20px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.accordion-header:hover {
+  background-color: #d8cce5;
+}
+
+.accordion-content {
+  padding: 0 20px;
+  background-color: #faf5ff;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion-item.active .accordion-content {
+  padding: 12px 20px;
+  max-height: 600px;
+}
+
+a {
+  color: var(--primary-purple);
+  text-decoration: none;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    .result-container {
-        padding: 20px;
-        width: 90%;
-    }
+  h1 {
+    font-size: 2rem;
+  }
 
-    .button-container {
-        position: static;
-        margin-top: 20px;
-        margin-bottom: 10px; /* Espacio extra abajo */
-        justify-content: center;
-        order: 3; /* Mueve los botones al final en el orden flex */
-    }
+  .descripcion {
+    font-size: 1rem;
+  }
 
-    h1 {
-        font-size: 28px;
-        order: 1;
-    }
-    
-    h2, p {
-        order: 2;
-    }
+  .botones {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    p {
-        font-size: 16px;
-    }
+  .btn {
+    width: 80%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 15px;
+  }
+
+  #directorio-btn {
+    font-size: 0.9em;
+    padding: 12px 20px;
+  }
 }

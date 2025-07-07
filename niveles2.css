@@ -37,12 +37,12 @@ body {
 
 /* --- Contenedor de Resultados --- */
 .result-container {
-    width: 80%;
-    max-width: 900px;
+    width: 90%;
+    max-width: 1000px;
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    padding: 40px;
+    padding: 10px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -64,7 +64,7 @@ body {
 
 /* --- Títulos y Texto --- */
 h1 {
-    font-size: 36px;
+    font-size: 30px;
     margin-bottom: 20px;
     font-weight: 700;
     text-transform: uppercase;
@@ -73,10 +73,11 @@ h1 {
     color: white;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 25px;
     margin-bottom: 25px;
     display: flex;
     align-items: center;
@@ -94,6 +95,21 @@ p {
     line-height: 1.7;
     font-weight: 300;
 }
+
+/* --- Barra de Progreso --- */
+.progress-bar-container {
+    background-color: #e9ecef;
+    border-radius: 1rem;
+    padding: 4px;
+    margin-top: 30px;
+}
+.progress-bar {
+    height: 12px;
+    background-color: #7bc3ec; /* Color por defecto, se sobreescribe por nivel */
+    border-radius: 1rem;
+    transition: width 1.5s ease-out;
+}
+
 
 /* ================================================================
    ESTILOS ESPECÍFICOS DEL NIVEL 2

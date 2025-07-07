@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <title>Nivel 10: Emergencia</title>
     <link rel="stylesheet" href="niveles10.css">
 </head>
@@ -21,10 +25,28 @@
             sola; pide que alguien te acompañe.</p>
         <p><strong>Guía:</strong> En caso de pensamientos de autolesión o suicidio, llama a líneas de emergencia o acude
             a un hospital. La atención urgente puede salvar tu vida y abrir un camino hacia la recuperación.</p>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar" style="width: 100%;"></div>
+        </div>
     </div>
+    </div>
+    <!-- Botón de directorio debajo del resultado -->
+    <p></p>
+    <div>
+        <button class="btn" onclick="openModal()">📂 DIRECTORIO</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">❌</span>
+            <iframe id="iframe" src="directorio.html"></iframe>
+        </div>
+    </div>
+
     <script>
         window.onload = function () {
-            // Obtener el nombre desde sessionStorage
             const nombre = sessionStorage.getItem('nombreUsuario');
             if (nombre) {
                 document.getElementById('nombreUsuario').innerText = "Hola, " + nombre + ".";
@@ -32,7 +54,23 @@
                 document.getElementById('nombreUsuario').innerText = "Resultados";
             }
         }
+
+        function openModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        window.addEventListener('message', function (event) {
+            if (event.data.iframeHeight) {
+                const iframe = document.getElementById('iframe');
+                iframe.style.height = event.data.iframeHeight + 'px';
+            }
+        });
     </script>
+
 </body>
 
 </html>

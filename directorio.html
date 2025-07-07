@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: transparent;
+      color: #4a3c58;
+    }
+
+    .container {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #d8cce5;
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      background-color: #e8d8f4;
+      cursor: pointer;
+      padding: 14px 20px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .accordion-header:hover {
+      background-color: #d8cce5;
+    }
+
+    .accordion-content {
+      background-color: #faf5ff;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      padding: 0 20px;
+    }
+
+    .accordion-content p {
+      margin: 8px 0;
+    }
+
+    .accordion-item.active .accordion-content {
+      padding: 12px 20px;
+      max-height: 1000px; /* Suficiente para mostrar contenido */
+    }
+
+    a {
+      color: #6b3fa0;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <div class="accordion-header">💜 1. Ayuda Psicológica</div>
+        <div class="accordion-content">
+          <p><strong>📞 Línea 100 - MIMP</strong><br>
+            • Apoyo emocional, orientación psicológica.<br>
+            • Teléfono: <strong>100</strong> (gratuito, 24/7)<br>
+            • 🌐 Web: <a href="https://www.mimp.gob.pe" target="_blank">mimp.gob.pe</a></p>
+          <p><strong>🏥 Centro de Salud Mental "María Auxiliadora"</strong><br>
+            • 📍 Av. Pachacútec 2900, SJM<br>
+            • 📞 (01) 510-1673<br>
+            • 🕗 L-V, 8:00 a.m. – 5:00 p.m.<br>
+            • 💬 Psicoterapia y talleres</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">⚖️ 2. Ayuda Legal y Protección</div>
+        <div class="accordion-content">
+          <p><strong>👨‍⚖️ DEMUNA – VMT</strong><br>
+            • 📍 Av. Salvador Allende s/n<br>
+            • 📞 (01) 719-2050 anexo 111<br>
+            • 💬 Orientación legal y protección de derechos</p>
+          <p><strong>🚨 Centro Emergencia Mujer – VMT</strong><br>
+            • 📍 Av. Pachacútec 12500, VMT<br>
+            • 📞 (01) 421-1510<br>
+            • 🧠 Atención legal, psicológica y social<br>
+            • 🕗 L-V, 8:00 a.m. – 4:30 p.m.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">📚 3. Ayuda Educativa y Reintegración Escolar</div>
+        <div class="accordion-content">
+          <p><strong>🏫 UGEL 01 – Lima Sur</strong><br>
+            • 📍 Av. El Sol 1470, SJM<br>
+            • 📞 (01) 615-5800<br>
+            • 🧾 Matrícula, continuidad y programas<br>
+            • 🌐 Web: <a href="https://www.ugel01.gob.pe" target="_blank">ugel01.gob.pe</a></p>
+          <p><strong>💻 Fundación Telefónica – Aula Digital Perú</strong><br>
+            • 🧠 Plataforma educativa gratuita<br>
+            • 🌐 Web: <a href="https://aulas.fundaciontelefonica.com.pe" target="_blank">aulas.fundaciontelefonica.com.pe</a><br>
+            • 🕐 Disponible 24/7</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function reportHeight() {
+      const height = document.body.scrollHeight;
+      parent.postMessage({ iframeHeight: height }, '*');
+    }
+
+    const headers = document.querySelectorAll('.accordion-header');
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+
+        document.querySelectorAll('.accordion-item').forEach(i => {
+          if (i !== item) i.classList.remove('active');
+        });
+
+        item.classList.toggle('active');
+
+        // Medir después del cambio visual
+        setTimeout(reportHeight, 600);
+      });
+    });
+
+    window.addEventListener('load', reportHeight);
+
+    const resizeObserver = new ResizeObserver(reportHeight);
+    resizeObserver.observe(document.body);
+
+    const mutationObserver = new MutationObserver(() => {
+      setTimeout(reportHeight, 50);
+    });
+    mutationObserver.observe(document.body, {
+      attributes: true,
+      childList: true,
+      subtree: true
+    });
+  </script>
+
+</body>
+
+</html>

@@ -31,11 +31,11 @@ body {
 /* --- Contenedor de Resultados --- */
 .result-container {
     width: 80%;
-    max-width: 900px;
+    max-width: 1000px;
     background: rgba(255, 255, 255, 0.92); /* Ligeramente más opaco */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 40px;
+    padding: 10px;
     border-radius: 20px;
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -65,7 +65,7 @@ body {
 
 /* --- Títulos y Texto --- */
 h1 {
-    font-size: 36px;
+    font-size: 30px;
     margin-bottom: 20px;
     font-weight: 700;
     text-transform: uppercase;
@@ -75,10 +75,11 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     background: linear-gradient(45deg, #684291, #5c3d78);
+    text-align: center;
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 25px;
     margin-bottom: 25px;
     display: flex;
     align-items: center;
