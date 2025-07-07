@@ -28,19 +28,22 @@ body {
 
 header {
     position: relative;
-    padding: 20px; /* Se usa un padding más consistente */
+    padding: 20px;
+    /* Se usa un padding más consistente */
 }
 
 h1 {
     font-size: 2.5rem;
     color: #000;
-    margin: 0; /* Se quita el margen por defecto */
+    margin: 0;
+    /* Se quita el margen por defecto */
 }
 
 .menu-icon {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); /* Centrado vertical perfecto */
+    transform: translateY(-50%);
+    /* Centrado vertical perfecto */
     right: 25px;
     cursor: pointer;
     z-index: 1000;
@@ -58,14 +61,18 @@ h1 {
 /* --- RESPONSIVE: Estilo de la imagen principal --- */
 .main-image {
     margin-top: 20px;
-    max-width: 100%; /* La imagen se ajustará al ancho del contenedor */
-    height: auto;   /* Mantiene la proporción de la imagen */
-    width: 700px;   /* Mantiene un tamaño máximo en pantallas grandes */
+    max-width: 100%;
+    /* La imagen se ajustará al ancho del contenedor */
+    height: auto;
+    /* Mantiene la proporción de la imagen */
+    width: 700px;
+    /* Mantiene un tamaño máximo en pantallas grandes */
 }
 
 .descripcion {
     font-size: 1.1rem;
-    margin: 25px auto; /* Aumenta el margen vertical para más espacio */
+    margin: 25px auto;
+    /* Aumenta el margen vertical para más espacio */
     width: 90%;
     max-width: 900px;
     line-height: 1.6;
@@ -77,23 +84,28 @@ h1 {
     justify-content: center;
     gap: 20px;
     font-weight: bold;
-    flex-wrap: wrap; /* Permite que los botones pasen a la siguiente línea si no caben */
+    flex-wrap: wrap;
+    /* Permite que los botones pasen a la siguiente línea si no caben */
 }
 
 .btn {
     display: inline-block;
-    padding: 12px 25px; /* Padding ligeramente mayor para mejor tacto */
+    padding: 12px 25px;
+    /* Padding ligeramente mayor para mejor tacto */
     text-decoration: none;
-    border-radius: 8px; /* Bordes más redondeados */
+    border-radius: 8px;
+    /* Bordes más redondeados */
     font-size: 1.1em;
     cursor: pointer;
     border: none;
     color: white;
-    transition: transform 0.2s ease, background-color 0.2s ease; /* Transición más suave */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    /* Transición más suave */
 }
 
 .btn:hover {
-    transform: scale(1.05); /* El efecto hover se mantiene */
+    transform: scale(1.05);
+    /* El efecto hover se mantiene */
 }
 
 /* --- OPTIMIZACIÓN: Se consolida el estilo de los botones con el mismo color --- */
@@ -104,7 +116,8 @@ h1 {
 
 .interactivo:hover,
 .test:hover {
-    background-color: var(--primary-purple); /* Oscurece al pasar el cursor */
+    background-color: var(--primary-purple);
+    /* Oscurece al pasar el cursor */
 }
 
 /* --- Estilos de la Ventana Emergente (Popup) --- */
@@ -115,11 +128,13 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo ligeramente más oscuro */
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Fondo ligeramente más oscuro */
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    padding: 15px; /* Añade padding para que la ventana no pegue a los bordes en móvil */
+    padding: 15px;
+    /* Añade padding para que la ventana no pegue a los bordes en móvil */
 }
 
 .contenido-ventana {
@@ -127,13 +142,16 @@ h1 {
     padding: 30px;
     border-radius: 8px;
     text-align: center;
-    width: 100%; /* Ancho completo en móvil */
-    max-width: 350px; /* Ancho máximo para pantallas más grandes */
+    width: 100%;
+    /* Ancho completo en móvil */
+    max-width: 350px;
+    /* Ancho máximo para pantallas más grandes */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
 .contenido-ventana h2 {
-    margin-top: 0; /* Se quita el margen superior */
+    margin-top: 0;
+    /* Se quita el margen superior */
     margin-bottom: 20px;
     color: #333;
 }
@@ -171,7 +189,8 @@ input[type="text"] {
 /* --- RESPONSIVE: Media Query para dispositivos móviles y tablets --- */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2rem; /* Reduce el tamaño del título en móviles */
+        font-size: 2rem;
+        /* Reduce el tamaño del título en móviles */
     }
 
     .descripcion {
@@ -179,128 +198,143 @@ input[type="text"] {
     }
 
     .botones {
-        flex-direction: column; /* Apila los botones verticalmente */
-        align-items: center; /* Centra los botones apilados */
+        flex-direction: column;
+        /* Apila los botones verticalmente */
+        align-items: center;
+        /* Centra los botones apilados */
     }
 
     .btn {
-        width: 80%; /* Los botones ocupan más ancho para ser fáciles de tocar */
+        width: 80%;
+        /* Los botones ocupan más ancho para ser fáciles de tocar */
         max-width: 300px;
     }
 }
 
 /* --- Estilos del botón flotante del Directorio --- */
 #directorio-btn {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  padding: 15px 25px;
-  font-size: 1em;
-  background-color: var(--secondary-purple);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s;
-  z-index: 999;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 15px 25px;
+    font-size: 1em;
+    background-color: var(--secondary-purple);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 #directorio-btn:hover {
-  background-color: var(--primary-purple);
+    background-color: var(--primary-purple);
 }
 
 /* --- Modal y Acordeón del Directorio --- */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  animation: fadeIn 0.3s ease;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .modal-content {
-  background-color: #fff;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 420px;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  padding: 20px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-  animation: slideUp 0.4s ease;
+    background-color: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease;
 }
 
 @keyframes slideUp {
-  from { transform: translateY(30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.5em;
-  color: #777;
-  cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5em;
+    color: #777;
+    cursor: pointer;
 }
 
 .accordion-item {
-  border-bottom: 1px solid #d8cce5;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
+    border-bottom: 1px solid #d8cce5;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
 }
 
 .accordion-header {
-  background-color: #e8d8f4;
-  cursor: pointer;
-  padding: 14px 20px;
-  font-weight: bold;
-  transition: background-color 0.3s;
+    background-color: #e8d8f4;
+    cursor: pointer;
+    padding: 14px 20px;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 .accordion-header:hover {
-  background-color: #d8cce5;
+    background-color: #d8cce5;
 }
 
 .accordion-content {
-  padding: 0 20px;
-  background-color: #faf5ff;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
+    padding: 0 20px;
+    background-color: #faf5ff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
 }
 
 .accordion-item.active .accordion-content {
-  padding: 12px 20px;
-  max-height: 600px;
+    padding: 12px 20px;
+    max-height: 600px;
 }
 
 a {
-  color: var(--primary-purple);
-  text-decoration: none;
+    color: var(--primary-purple);
+    text-decoration: none;
 }
 
 @media (max-width: 480px) {
-  .modal-content {
-    padding: 15px;
-  }
+    .modal-content {
+        padding: 15px;
+    }
 
-  #directorio-btn {
-    font-size: 0.9em;
-    padding: 12px 20px;
-  }
+    #directorio-btn {
+        font-size: 0.9em;
+        padding: 12px 20px;
+    }
 }
