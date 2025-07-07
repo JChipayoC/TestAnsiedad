@@ -188,3 +188,119 @@ input[type="text"] {
         max-width: 300px;
     }
 }
+
+/* --- Estilos del botón flotante del Directorio --- */
+#directorio-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 15px 25px;
+  font-size: 1em;
+  background-color: var(--secondary-purple);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#directorio-btn:hover {
+  background-color: var(--primary-purple);
+}
+
+/* --- Modal y Acordeón del Directorio --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5em;
+  color: #777;
+  cursor: pointer;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #d8cce5;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion-header {
+  background-color: #e8d8f4;
+  cursor: pointer;
+  padding: 14px 20px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.accordion-header:hover {
+  background-color: #d8cce5;
+}
+
+.accordion-content {
+  padding: 0 20px;
+  background-color: #faf5ff;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion-item.active .accordion-content {
+  padding: 12px 20px;
+  max-height: 600px;
+}
+
+a {
+  color: var(--primary-purple);
+  text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 15px;
+  }
+
+  #directorio-btn {
+    font-size: 0.9em;
+    padding: 12px 20px;
+  }
+}
